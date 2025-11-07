@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://cdtvuj6a4254e"]
+
+[ext_resource type="Script" uid="uid://b0ippbxo2ootw" path="res://paper.gd" id="1_pugg3"]
+[ext_resource type="Texture2D" uid="uid://b7ja7kve13ye8" path="res://paper-removebg-preview.png" id="2_dpwhn"]
+[ext_resource type="Script" uid="uid://sfylj5t5awy4" path="res://label.gd" id="3_kq2bq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dpwhn"]
+radius = 38.832977
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kq2bq"]
+radius = 36.359318
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rhp03"]
+radius = 29.681644
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h5hlm"]
+radius = 34.36568
+
+[node name="PaperScene" type="Node2D"]
+script = ExtResource("1_pugg3")
+
+[node name="paper1" type="Node2D" parent="."]
+
+[node name="sprite" type="Sprite2D" parent="paper1"]
+position = Vector2(971, 579.00006)
+scale = Vector2(0.13517915, 0.10591133)
+texture = ExtResource("2_dpwhn")
+
+[node name="Area2D" type="Area2D" parent="paper1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="paper1/Area2D"]
+position = Vector2(968, 579)
+shape = SubResource("CircleShape2D_dpwhn")
+
+[node name="paper2" type="Node2D" parent="."]
+
+[node name="sprite2" type="Sprite2D" parent="paper2"]
+position = Vector2(684.25, 559)
+scale = Vector2(0.17833865, 0.10591133)
+texture = ExtResource("2_dpwhn")
+
+[node name="Area2D" type="Area2D" parent="paper2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="paper2/Area2D"]
+position = Vector2(681, 560)
+shape = SubResource("CircleShape2D_kq2bq")
+
+[node name="paper3" type="Node2D" parent="."]
+
+[node name="sprite3" type="Sprite2D" parent="paper3"]
+position = Vector2(419.99997, 538)
+scale = Vector2(0.044788186, 0.14901474)
+texture = ExtResource("2_dpwhn")
+
+[node name="Area2D" type="Area2D" parent="paper3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="paper3/Area2D"]
+position = Vector2(420, 538)
+shape = SubResource("CircleShape2D_rhp03")
+
+[node name="paper4" type="Node2D" parent="."]
+
+[node name="sprite4" type="Sprite2D" parent="paper4"]
+position = Vector2(61, 617)
+scale = Vector2(0.1180781, 0.070197105)
+texture = ExtResource("2_dpwhn")
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="paper4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="paper4/Area2D"]
+position = Vector2(65, 615)
+shape = SubResource("CircleShape2D_h5hlm")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("3_kq2bq")
+
+[connection signal="mouse_entered" from="paper1/Area2D" to="." method="_on_paper1_mouse_entered"]
+[connection signal="mouse_entered" from="paper1/Area2D" to="." method="_on_area_2d_mouse_entered" binds= [NodePath("..")]]
+[connection signal="mouse_entered" from="paper2/Area2D" to="." method="_on_paper2_mouse_entered"]
+[connection signal="mouse_entered" from="paper3/Area2D" to="." method="_on_paper3_mouse_entered"]
+[connection signal="mouse_entered" from="paper4/Area2D" to="." method="_on_paper4_mouse_entered"]

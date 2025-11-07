@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cecrf378auc2p"]
+
+[ext_resource type="Script" uid="uid://mx3hvyww2rmv" path="res://lock.gd" id="1_l5ccq"]
+[ext_resource type="Texture2D" uid="uid://br7hk2vp28nks" path="res://image-removebg-preview.png" id="2_x87c7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_srdec"]
+radius = 40.5216
+
+[node name="Lock" type="Node2D"]
+script = ExtResource("1_l5ccq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(489.00006, 437)
+scale = Vector2(0.13999999, 0.13999999)
+texture = ExtResource("2_x87c7")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(485, 442)
+shape = SubResource("CircleShape2D_srdec")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+offset_left = 463.0
+offset_top = 280.0
+offset_right = 605.0
+offset_bottom = 311.0
+placeholder_text = "Whats the code"
+
+[connection signal="mouse_entered" from="Area2D" to="." method="change_cursor_hand"]
+[connection signal="mouse_exited" from="Area2D" to="." method="change_cursor_back"]
+[connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]
